@@ -43,5 +43,14 @@ def extract_text_api():
     # Return the extracted text as a JSON response
     return jsonify({"extracted_text": extracted_text})
 
+@app.route('/check-tesseract', methods=['GET'])
+def check_tesseract():
+    try:
+        output = pytesseract.image_to_string(np.zeros((100, 100, 3), dtype=np.uint8))  # An empty image
+        return jsonify({"tesseract_installed": True, "output": output})
+    except Exception as e:
+        return jsonify({"tesseract_installed": False, "error": str(e)})
+
+
 if __name__ == "__main__":
     app.run(debug=True)
