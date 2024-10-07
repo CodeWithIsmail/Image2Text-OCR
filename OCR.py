@@ -1,19 +1,3 @@
-# from flask import Flask
-
-# app = Flask(__name__)
-
-# @app.route('/extract-text', methods=['GET'])
-# def extract_text_api():
-#     return "<h1>Hello ocr</h1"
-
-# @app.route('/extract-img', methods=['GET'])
-# def extract_img_api():
-#     return "<h1>Hello img</h1"
-
-# if __name__ == "__main__":
-#     app.run()
-
-
 from flask import Flask, request, jsonify
 import cv2
 import pytesseract
@@ -22,6 +6,10 @@ from PIL import Image
 import io
 
 app = Flask(__name__)
+
+# Set the Tesseract command path if necessary
+# Make sure this path is correct for your Render environment
+pytesseract.pytesseract.tesseract_cmd = '/usr/bin/tesseract'  # Adjust this path if needed
 
 # Function to extract text from the image
 def extract_text(image):
