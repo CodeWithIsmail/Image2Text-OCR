@@ -1,4 +1,4 @@
-# Use Python 3.11 base image
+# Use Python 3.11 slim image
 FROM python:3.11-slim
 
 # Install Tesseract OCR
@@ -12,7 +12,7 @@ WORKDIR /app
 
 # Copy the requirements.txt file and install dependencies
 COPY requirements.txt .
-RUN pip install -r requirements.txt
+RUN pip install --no-cache-dir -r requirements.txt
 
 # Copy the application files
 COPY . .
