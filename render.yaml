@@ -1,7 +1,9 @@
 services:
   - type: web
-    name: OCR-API
-    env: python
-    plan: free
-    buildCommand: "pip install -r requirements.txt"
+    name: ocr-flask-app
+    env: docker
+    buildCommand: ""
     startCommand: "python OCRapi.py"
+    plan: free
+    docker:
+      dockerfilePath: Dockerfile
